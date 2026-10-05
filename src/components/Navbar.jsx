@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X, FileText } from 'lucide-react';
+import { Sun, Moon, Menu, X, FileText, Download } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
 import TMonogram from './TMonogram';
 
@@ -103,7 +103,8 @@ export default function Navbar({ currentTheme, toggleTheme }) {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline btn-sm nav-resume-desktop"
-              aria-label="Download Tahir's Resume"
+              aria-label="View Tahir's Resume in a new browser tab"
+              title="View Tahir's Resume"
             >
               <FileText size={14} />
               <span>Resume</span>
@@ -164,16 +165,29 @@ export default function Navbar({ currentTheme, toggleTheme }) {
 
           <div className="mobile-drawer-footer">
             {hasResume ? (
-              <a
-                href={portfolioData.personal.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary btn-sm mobile-resume-btn"
-                onClick={handleLinkClick}
-              >
-                <FileText size={16} />
-                <span>Download Resume</span>
-              </a>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+                <a
+                  href={portfolioData.personal.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline btn-sm mobile-resume-btn"
+                  onClick={handleLinkClick}
+                  aria-label="View Tahir's Resume in a new browser tab"
+                >
+                  <FileText size={16} />
+                  <span>View Resume</span>
+                </a>
+                <a
+                  href={portfolioData.personal.resumeUrl}
+                  download="Yusuf_Tahir_Ajah_Resume.pdf"
+                  className="btn btn-primary btn-sm mobile-resume-btn"
+                  onClick={handleLinkClick}
+                  aria-label="Download Tahir's Resume PDF"
+                >
+                  <Download size={16} />
+                  <span>Download Resume</span>
+                </a>
+              </div>
             ) : (
               <a
                 href="#contact"

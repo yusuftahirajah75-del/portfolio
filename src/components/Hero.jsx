@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Github, Linkedin, Mail, CheckCircle, Terminal, FileText } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, CheckCircle, Terminal, FileText, Download } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
 
 export default function Hero() {
@@ -45,16 +45,28 @@ export default function Hero() {
               </a>
 
               {hasResume && (
-                <a
-                  href={personal.resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline"
-                  aria-label="Download Official Resume"
-                >
-                  <FileText size={16} />
-                  <span>Download Resume</span>
-                </a>
+                <>
+                  <a
+                    href={personal.resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline"
+                    aria-label="View Tahir's Resume in a new browser tab"
+                  >
+                    <FileText size={16} />
+                    <span>View Resume</span>
+                  </a>
+
+                  <a
+                    href={personal.resumeUrl}
+                    download="Yusuf_Tahir_Ajah_Resume.pdf"
+                    className="btn btn-outline"
+                    aria-label="Download Tahir's Resume PDF"
+                  >
+                    <Download size={16} />
+                    <span>Download Resume</span>
+                  </a>
+                </>
               )}
 
               <a href="#contact" className="btn btn-outline" aria-label="Contact Tahir">

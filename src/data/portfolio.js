@@ -22,7 +22,7 @@ export const portfolioData = {
     email: "yusuftahirajah75@gmail.com",
     githubUrl: "https://github.com/yusuftahirajah75-del",
     linkedinUrl: "https://ng.linkedin.com/in/tahir-yusuf-817012331",
-    resumeUrl: "/documents/Yusuf_Tahir_Ajah_Resume.pdf", // Verified resume from C:\aaa
+    resumeUrl: "/documents/Yusuf_Tahir_Ajah_Resume.pdf", // Verified current resume (SHA256: d95e222d...)
     avatarUrl: "/images/ajah.png", // Verified portrait from C:\aaa\ajah.png
     hasPhoto: true,
 
