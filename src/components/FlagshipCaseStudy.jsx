@@ -110,7 +110,7 @@ export default function FlagshipCaseStudy() {
           </div>
 
           {/* Interactive Case Study Navigation Tabs */}
-          <div style={{ background: 'var(--bg-tertiary)', padding: 'var(--space-3) var(--space-8)', borderBottom: '1px solid var(--border-default)', display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
+          <div className="flagship-tabs-bar" style={{ background: 'var(--bg-tertiary)', borderBottom: '1px solid var(--border-default)', display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
             <button
               onClick={() => setActiveTab('architecture')}
               className={`filter-btn ${activeTab === 'architecture' ? 'active' : ''}`}
@@ -166,7 +166,7 @@ export default function FlagshipCaseStudy() {
                 ))}
               </div>
 
-              <div style={{ marginTop: 'var(--space-6)', background: 'var(--code-bg)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: 'var(--space-4)', fontSize: 'var(--text-xs)', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>
+              <div style={{ marginTop: 'var(--space-6)', background: 'var(--code-bg)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: 'var(--space-4)', fontSize: 'var(--text-xs)', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)', overflowX: 'auto', wordBreak: 'break-word' }}>
                 <span style={{ color: 'var(--accent-cyan)' }}>// Scoring Pipeline:</span> score = riskScorer.evaluate([urlSignals, emailSignals, phoneSignals, regionalScamDB, tenantBaselines])
               </div>
             </div>

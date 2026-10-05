@@ -1,9 +1,9 @@
 import React from 'react';
-import { ArrowRight, Github, Linkedin, Mail, Shield, CheckCircle, Terminal, FileText, Code2 } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, CheckCircle, Terminal, FileText } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
 
 export default function Hero() {
-  const { personal, recruiterSnapshot } = portfolioData;
+  const { personal } = portfolioData;
   const hasResume = Boolean(personal.resumeUrl && personal.resumeUrl.trim());
 
   return (
@@ -18,13 +18,14 @@ export default function Hero() {
               <span>{personal.availability.label}</span>
             </div>
 
-            {/* Name & Title */}
+            {/* Greeting */}
             <h1 className="hero-name">
-              <span className="hero-title-gradient">{personal.name}</span>
+              <span className="hero-title-gradient">Hi, I'm Tahir 👋</span>
             </h1>
 
+            {/* Professional Title & Full Name */}
             <div className="hero-role-tagline" aria-label="Professional Title">
-              {personal.title} — {personal.targetRole}
+              {personal.name} — {personal.title}
             </div>
 
             {/* Supporting Positioning Copy */}
@@ -56,7 +57,7 @@ export default function Hero() {
                 </a>
               )}
 
-              <a href="#contact" className="btn btn-outline" aria-label="Contact Yusuf Tahir Ajah">
+              <a href="#contact" className="btn btn-outline" aria-label="Contact Tahir">
                 <span>Contact Me</span>
               </a>
             </div>
@@ -68,7 +69,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-social-link"
-                aria-label="Yusuf's GitHub Profile"
+                aria-label="Tahir's GitHub Profile"
               >
                 <Github size={16} />
                 <span>GitHub</span>
@@ -79,7 +80,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-social-link"
-                aria-label="Yusuf's LinkedIn Profile"
+                aria-label="Tahir's LinkedIn Profile"
               >
                 <Linkedin size={16} />
                 <span>LinkedIn</span>
@@ -88,10 +89,10 @@ export default function Hero() {
               <a
                 href={`mailto:${personal.email}`}
                 className="hero-social-link"
-                aria-label="Send Email to Yusuf"
+                aria-label="Send Email to Tahir"
               >
                 <Mail size={16} />
-                <span>{personal.email}</span>
+                <span className="hero-email-text">{personal.email}</span>
               </a>
             </div>
           </div>
@@ -127,7 +128,7 @@ export default function Hero() {
                 </div>
                 <div className="console-title">
                   <Terminal size={14} />
-                  <span>yusuf_spec_sheet.json</span>
+                  <span>tahir_spec_sheet.json</span>
                 </div>
               </div>
 

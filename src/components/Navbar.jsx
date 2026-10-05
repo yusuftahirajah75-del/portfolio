@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X, Shield, FileText } from 'lucide-react';
+import { Sun, Moon, Menu, X, FileText } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
+import TMonogram from './TMonogram';
 
 export default function Navbar({ currentTheme, toggleTheme }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,6 +30,27 @@ export default function Navbar({ currentTheme, toggleTheme }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Keyboard accessibility: Close mobile drawer on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMenuOpen]);
+
   const navLinks = [
     { href: '#about', label: 'About', id: 'about' },
     { href: '#flagship', label: 'Flagship', id: 'flagship' },
@@ -48,14 +70,14 @@ export default function Navbar({ currentTheme, toggleTheme }) {
   return (
     <header className="navbar" role="banner">
       <div className="container nav-container">
-        {/* Brand Logo */}
-        <a href="#hero" className="nav-brand" aria-label="Yusuf Tahir Ajah - Home">
-          <div className="brand-icon" aria-hidden="true">
-            <Shield size={20} />
+        {/* Brand Logo with T Monogram */}
+        <a href="#hero" className="nav-brand" aria-label="Tahir - Home">
+          <div className="brand-icon-wrapper" aria-hidden="true">
+            <TMonogram size={36} />
           </div>
           <div className="brand-text">
-            <span className="brand-name">{portfolioData.personal.name}</span>
-            <span className="brand-role">{portfolioData.personal.title}</span>
+            <span className="brand-name">Tahir</span>
+            <span className="brand-role">Junior Full-Stack Dev</span>
           </div>
         </a>
 
@@ -73,15 +95,15 @@ export default function Navbar({ currentTheme, toggleTheme }) {
           ))}
         </nav>
 
-        {/* Actions: Theme Toggle, Resume & Mobile Button */}
+        {/* Actions: Theme Toggle, Resume & Mobile Hamburger Button */}
         <div className="nav-actions">
           {hasResume && (
             <a
               href={portfolioData.personal.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-outline btn-sm"
-              aria-label="Download Yusuf's Resume"
+              className="btn btn-outline btn-sm nav-resume-desktop"
+              aria-label="Download Tahir's Resume"
             >
               <FileText size={14} />
               <span>Resume</span>
@@ -102,45 +124,66 @@ export default function Navbar({ currentTheme, toggleTheme }) {
             className="mobile-menu-btn"
             aria-label={isMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
             aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav-drawer"
           >
             {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer Backdrop */}
       {isMenuOpen && (
-        <div className="mobile-drawer" role="navigation" aria-label="Mobile Navigation">
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
-              onClick={handleLinkClick}
-            >
-              {link.label}
-            </a>
-          ))}
-          {hasResume ? (
-            <a
-              href={portfolioData.personal.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary btn-sm"
-              onClick={handleLinkClick}
-            >
-              <FileText size={14} />
-              <span>Download Resume</span>
-            </a>
-          ) : (
-            <a
-              href="#contact"
-              className="btn btn-secondary btn-sm"
-              onClick={handleLinkClick}
-            >
-              Request Resume via Email
-            </a>
-          )}
+        <div
+          className="mobile-drawer-backdrop"
+          onClick={() => setIsMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile Navigation Drawer */}
+      {isMenuOpen && (
+        <div
+          id="mobile-nav-drawer"
+          className="mobile-drawer"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile Navigation Menu"
+        >
+          <div className="mobile-drawer-links">
+            {navLinks.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                className={`mobile-nav-link ${activeSection === link.id ? 'active' : ''}`}
+                onClick={handleLinkClick}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="mobile-drawer-footer">
+            {hasResume ? (
+              <a
+                href={portfolioData.personal.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary btn-sm mobile-resume-btn"
+                onClick={handleLinkClick}
+              >
+                <FileText size={16} />
+                <span>Download Resume</span>
+              </a>
+            ) : (
+              <a
+                href="#contact"
+                className="btn btn-secondary btn-sm mobile-resume-btn"
+                onClick={handleLinkClick}
+              >
+                Request Resume via Email
+              </a>
+            )}
+          </div>
         </div>
       )}
     </header>
