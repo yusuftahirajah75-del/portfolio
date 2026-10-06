@@ -193,6 +193,11 @@
 
 .t-monogram-logo {
   display: block;
+  transition: transform var(--transition-fast), filter var(--transition-normal);
+}
+
+.nav-brand:hover .t-monogram-logo {
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.55));
 }
 
 .brand-text {

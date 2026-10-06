@@ -1,15 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
   <defs>
-    <linearGradient id="favBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0284c7" />
-      <stop offset="100%" stop-color="#6366f1" />
+    <linearGradient id="favCanvas" x1="0" y1="0" x2="100" y2="100">
+      <stop offset="0%" stop-color="#0e1726" />
+      <stop offset="50%" stop-color="#070b14" />
+      <stop offset="100%" stop-color="#020408" />
     </linearGradient>
-    <linearGradient id="favBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="favBorder" x1="0" y1="0" x2="100" y2="100">
       <stop offset="0%" stop-color="#38bdf8" />
-      <stop offset="100%" stop-color="#818cf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="favStem" x1="40" y1="36" x2="60" y2="78">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="70%" stop-color="#e0e7ff" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="favCross" x1="20" y1="22" x2="80" y2="40">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#c7d2fe" />
     </linearGradient>
   </defs>
-  <rect x="4" y="4" width="92" height="92" rx="24" fill="url(#favBg)" stroke="url(#favBorder)" stroke-width="4" />
-  <path d="M24 26 H76 C77.5 26 79 27.5 79 29 V38 C79 39.5 77.5 41 76 41 H58 V70 C58 72 56 74 54 74 H46 C44 74 42 72 42 70 V41 H24 C22.5 41 21 39.5 21 38 V29 C21 27.5 22.5 26 24 26 Z" fill="#ffffff" />
-  <circle cx="72" cy="30" r="4" fill="#38bdf8" />
+
+  <!-- Squircle Canvas with Neon Border -->
+  <rect x="4" y="4" width="92" height="92" rx="26" fill="url(#favCanvas)" stroke="url(#favBorder)" stroke-width="4" />
+
+  <!-- T Monogram Body -->
+  <path d="M22 38L29 25H71L78 38H58V72C58 75.3 55.3 78 52 78H48C44.7 78 42 75.3 42 72V38H22Z" fill="url(#favStem)" />
+
+  <!-- Top Crossbar Highlight Layer -->
+  <path d="M29 25H71L75 33H25L29 25Z" fill="url(#favCross)" />
+
+  <!-- Cyber Diamond Accent -->
+  <polygon points="73,22 79,28 73,34 67,28" fill="#38bdf8" />
+  <circle cx="73" cy="28" r="2.5" fill="#ffffff" />
 </svg>

@@ -1,55 +1,91 @@
 import React from 'react';
 
 /**
- * TMonogram - Modern, professional single-letter T brand logo for Tahir.
- * Designed with geometric precision, subtle gradients, and dark/light mode compatibility.
+ * Standout T Monogram Logo for Tahir
+ * Features architectural geometry, obsidian/cyan cyber gradients,
+ * micro-bevel facets, and an ambient luminescence glow filter.
  */
-export default function TMonogram({ size = 36, className = '' }) {
+export default function TMonogram({ size = 38, className = '' }) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 40 40"
+      viewBox="0 0 44 44"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={`t-monogram-logo ${className}`}
       aria-hidden="true"
     >
       <defs>
-        <linearGradient id="tMonoBg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#0284c7" />
-          <stop offset="100%" stopColor="#6366f1" />
+        {/* Ambient Glow */}
+        <filter id="tMonoGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="2" stdDeviation="3.5" floodColor="#38bdf8" floodOpacity="0.3" />
+        </filter>
+
+        {/* Obsidian Glass Canvas Gradient */}
+        <linearGradient id="tCanvasGrad" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#0e1726" />
+          <stop offset="50%" stopColor="#070b14" />
+          <stop offset="100%" stopColor="#020408" />
         </linearGradient>
-        <linearGradient id="tMonoBorder" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#818cf8" stopOpacity="0.5" />
+
+        {/* Premium Border Gradient */}
+        <linearGradient id="tBorderGrad" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#38bdf8" />
+          <stop offset="50%" stopColor="#818cf8" />
+          <stop offset="100%" stopColor="#0284c7" />
         </linearGradient>
-        <linearGradient id="tGlyphGrad" x1="10" y1="11" x2="30" y2="29" gradientUnits="userSpaceOnUse">
+
+        {/* Crossbar Highlight Gradient */}
+        <linearGradient id="tCrossbarGrad" x1="8" y1="10" x2="36" y2="18" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#38bdf8" />
+          <stop offset="50%" stopColor="#ffffff" />
+          <stop offset="100%" stopColor="#c7d2fe" />
+        </linearGradient>
+
+        {/* Stem Gradient */}
+        <linearGradient id="tStemGrad" x1="18" y1="16" x2="26" y2="34" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="100%" stopColor="#f0f9ff" />
+          <stop offset="70%" stopColor="#e0e7ff" />
+          <stop offset="100%" stopColor="#38bdf8" />
         </linearGradient>
       </defs>
 
-      {/* Rounded Squircle Background */}
+      {/* Outer Squircle Container with Glow */}
       <rect
-        x="1.5"
-        y="1.5"
-        width="37"
-        height="37"
-        rx="10"
-        fill="url(#tMonoBg)"
-        stroke="url(#tMonoBorder)"
+        x="2"
+        y="2"
+        width="40"
+        height="40"
+        rx="11"
+        fill="url(#tCanvasGrad)"
+        stroke="url(#tBorderGrad)"
         strokeWidth="1.5"
+        filter="url(#tMonoGlow)"
       />
 
-      {/* Geometric 'T' Glyph */}
+      {/* Decorative Inner Grid Accent Line */}
+      <line x1="6" y1="22" x2="38" y2="22" stroke="rgba(56, 189, 248, 0.12)" strokeDasharray="2 3" />
+      <line x1="22" y1="6" x2="22" y2="38" stroke="rgba(56, 189, 248, 0.12)" strokeDasharray="2 3" />
+
+      {/* T Monogram Body */}
       <path
-        d="M10 11H30C30.5523 11 31 11.4477 31 12V15.5C31 16.0523 30.5523 16.5 30 16.5H23V27.5C23 28.3284 22.3284 29 21.5 29H18.5C17.6716 29 17 28.3284 17 27.5V16.5H10C9.44772 16.5 9 16.0523 9 15.5V12C9 11.4477 9.44772 11 10 11Z"
-        fill="url(#tGlyphGrad)"
+        d="M10 16.5L13 11H31L34 16.5H25.5V31.5C25.5 32.88 24.38 34 23 34H21C19.62 34 18.5 32.88 18.5 31.5V16.5H10Z"
+        fill="url(#tStemGrad)"
       />
 
-      {/* Engineering Accent Dot */}
-      <circle cx="28.5" cy="12.5" r="1.5" fill="#38bdf8" />
+      {/* Top Crossbar Highlight Layer */}
+      <path
+        d="M13 11H31L33 14.5H11L13 11Z"
+        fill="url(#tCrossbarGrad)"
+      />
+
+      {/* Cyber Engineering Accent Diamond */}
+      <polygon
+        points="32,9.5 34.5,12 32,14.5 29.5,12"
+        fill="#38bdf8"
+      />
+      <circle cx="32" cy="12" r="1" fill="#ffffff" />
     </svg>
   );
 }
